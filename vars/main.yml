@@ -1,0 +1,16 @@
+---
+install_packages:
+  - 'libpam-krb5'
+  - 'krb5-user'
+install_files:
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                "{{ role_path }}/files/conf/krb5.conf"
+    dest:               '/etc/krb5.conf'
+users:
+  - 'aaron'
+  - 'rachel'
+user_groups:            "{{ users }}"
+homedirs:               "{{ users }}"
+
