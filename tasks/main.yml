@@ -2,5 +2,19 @@
 - include:              '../tasks/install_packages.yml'
 - include:              '../tasks/install_files.yml'
 - include:              '../tasks/user_groups.yml'
+  vars:
+    user_groups:        "{{ groups['users'] }}"
 - include:              '../tasks/users.yml'
+  vars:
+    users:              "{{ groups['users'] }}"
+- include:              '../tasks/add_users_to_groups.yml'
+  vars:
+    add_users_to_groups:
+      - user:           "{{ item }}"
+        groups:
+          - 'games'
+  with_items:           "{{ groups['games'] }}"
+  when:                 groups['games'] is defined
 - include:              '../tasks/homedirs.yml'
+  vars:
+    homedirs:           "{{ groups['users'] }}"
