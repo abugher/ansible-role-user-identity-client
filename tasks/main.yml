@@ -3,18 +3,18 @@
 - include:              '../tasks/install_files.yml'
 - include:              '../tasks/user_groups.yml'
   vars:
-    user_groups:        "{{ groups['users'] }}"
+    user_groups:        "{{ usergroup_all }}"
 - include:              '../tasks/users.yml'
   vars:
-    users:              "{{ groups['users'] }}"
+    users:              "{{ usergroup_all }}"
 - include:              '../tasks/add_users_to_groups.yml'
   vars:
     add_users_to_groups:
       - user:           "{{ item }}"
         groups:
           - 'games'
-  with_items:           "{{ groups['games'] }}"
-  when:                 groups['games'] is defined
+  with_items:           "{{ usergroup_games }}"
+  when:                 usergroup_games is defined
 - include:              '../tasks/homedirs.yml'
   vars:
-    homedirs:           "{{ groups['users'] }}"
+    homedirs:           "{{ usergroup_all }}"
