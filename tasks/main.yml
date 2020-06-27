@@ -18,3 +18,6 @@
 - include:              '../tasks/homedirs.yml'
   vars:
     homedirs:           "{{ usergroup_all }}"
+- include:              '../tasks/allow_users.yml'
+  vars:
+    allow_users:        "{{ usergroup_all }}"
