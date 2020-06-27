@@ -14,7 +14,6 @@
         groups:
           - 'games'
   with_items:           "{{ usergroup_games }}"
-  when:                 usergroup_games is defined
 - include:              '../tasks/homedirs.yml'
   vars:
     homedirs:           "{{ usergroup_all }}"
