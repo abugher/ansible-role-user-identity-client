@@ -14,9 +14,10 @@
         groups:
           - 'games'
   with_items:           "{{ usergroup_games }}"
-- include:              '../tasks/homedirs.yml'
+- include:              '../tasks/homedir.yml'
   vars:
-    homedirs:           "{{ usergroup_all }}"
+    homedir_user:       "{{ item }}"
+  with_items:           "{{ usergroup_all }}"
 - include:              '../tasks/allow_users.yml'
   vars:
     allow_users:        "{{ usergroup_all }}"
