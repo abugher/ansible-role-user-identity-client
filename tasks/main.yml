@@ -10,10 +10,12 @@
 - include:              '../tasks/add_users_to_groups.yml'
   vars:
     add_users_to_groups:
-      - user:           "{{ item }}"
+      - user:           "{{ user }}"
         groups:
           - 'games'
   with_items:           "{{ usergroup_games }}"
+  loop_control:
+    loop_var:           'user'
 - include:              'homedir.yml'
   vars:
     homedir_user:       "{{ item }}"

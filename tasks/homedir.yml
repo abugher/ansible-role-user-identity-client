@@ -2,7 +2,7 @@
 - name:                 'check for directory'
   stat:
     path:               '../files/conf/homedirs/common/common/'
-  delegate_to:          localhost
+  connection:           local
   become:               'no'
   register:             homedir_common_check_result
 - name:                 'home directory contents, common'
@@ -17,7 +17,7 @@
 - name:                 'check for directory'
   stat:
     path:               '../../sensitive_ansible/files/conf/homedirs/common/common/'
-  delegate_to:          localhost
+  connection:           local
   become:               'no'
   register:             homedir_common_sensitive_check_result
 - name:                 'home directory contents, common, sensitive'
@@ -32,7 +32,7 @@
 - name:                 'check for directory'
   stat:
     path:               "../files/conf/homedirs/{{ homedir_user }}/common/"
-  delegate_to:          localhost
+  connection:           local
   become:               'no'
   register:             homedir_by_user_check_result
 - name:                 'home directory contents, by user'
@@ -47,7 +47,7 @@
 - name:                 'check for directory'
   stat:
     path:               "../../sensitive_ansible/files/conf/homedirs/{{ homedir_user }}/common/"
-  delegate_to:          localhost
+  connection:           local
   become:               'no'
   register:             homedir_by_user_sensitive_check_result 
 - name:                 'home directory contents, by user, sensitive'
@@ -62,7 +62,7 @@
 - name:                 'check for directory'
   stat:
     path:               "../files/conf/homedirs/{{ homedir_user }}/{{ inventory_hostname }}/"
-  delegate_to:          localhost
+  connection:           local
   become:               'no'
   register:             homedir_by_user_at_host_check_result
 - name:                 'home directory contents, by user and host'
@@ -77,7 +77,7 @@
 - name:                 'check for directory'
   stat:
     path:               "../../sensitive_ansible/files/conf/homedirs/{{ homedir_user }}/{{ inventory_hostname }}/"
-  delegate_to:          localhost
+  connection:           local
   become:               'no'
   register:             homedir_by_user_at_host_sensitive_check_result 
 - name:                 'home directory contents, by user and host, sensitive'
